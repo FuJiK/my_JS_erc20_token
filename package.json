@@ -1,0 +1,23 @@
+{
+  "name": "my_JS_erc20_token",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get your application up and running.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://fujikeeeen@bitbucket.org/fujikeeeen/myjserc20token.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/fujikeeeen/myjserc20token#readme",
+  "dependencies": {
+    "zeppelin-solidity": "^1.8.0"
+  }
+}
