@@ -18,7 +18,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/fujikeeeen/myjserc20token#readme",
   "dependencies": {
-    "zeppelin-solidity": "1.8.0"
+    "truffle-hdwallet-provider": "0.0.3",
+    "zeppelin-solidity": "^1.8.0"
   },
   "devDependencies": {}
 }

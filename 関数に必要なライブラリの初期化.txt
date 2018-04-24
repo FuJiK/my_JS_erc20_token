@@ -1,0 +1,148 @@
+ Ò /m/c/U/k/O/ãZ/n/my_JS_erc20_token Ò · master Å} Ò npm init -f
+npm WARN using --force I sure hope you know what you are doing.
+Wrote to /mnt/c/Users/kenfu/OneDrive - ÉWÉÉÉpÉìÉVÉXÉeÉÄäîéÆâÔé–/ãZèpÉRÉ~ÉÖ3ä˙/nodejs/my_JS_erc20_token/package.json:
+
+{
+  "name": "my_JS_erc20_token",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get your application up and running.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://fujikeeeen@bitbucket.org/fujikeeeen/myjserc20token.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/fujikeeeen/myjserc20token#readme",
+  "dependencies": {
+    "zeppelin-solidity": "1.8.0"
+  },
+  "devDependencies": {}
+}
+
+
+ /m/c/U/k/O/ãZ/n/my_JS_erc20_token Ò · master Å} Ò npm install --save zeppelin-solidity truffle-hdwallet-provider
+
+> scrypt@6.0.3 preinstall /mnt/c/Users/kenfu/OneDrive - ÉWÉÉÉpÉìÉVÉXÉeÉÄäîéÆâÔé–/ãZèpÉRÉ~ÉÖ3ä˙/nodejs/my_JS_erc20_token/node_mod
+ules/scrypt
+> node node-scrypt-preinstall.js
+
+
+> scrypt@6.0.3 install /mnt/c/Users/kenfu/OneDrive - ÉWÉÉÉpÉìÉVÉXÉeÉÄäîéÆâÔé–/ãZèpÉRÉ~ÉÖ3ä˙/nodejs/my_JS_erc20_token/node_module
+s/scrypt
+> node-gyp rebuild
+
+make: Entering directory '/mnt/c/Users/kenfu/OneDrive - ÉWÉÉÉpÉìÉVÉXÉeÉÄäîéÆâÔé–/ãZèpÉRÉ~ÉÖ3ä˙/nodejules/scrypt/build'n/node_mod
+  SOLINK_MODULE(target) Release/obj.target/copied_files.node
+  COPY Release/copied_files.node
+  CC(target) Release/obj.target/scrypt_wrapper/src/util/memlimit.o
+  CC(target) Release/obj.target/scrypt_wrapper/src/scryptwrapper/keyderivation.o
+  CC(target) Release/obj.target/scrypt_wrapper/src/scryptwrapper/pickparams.o
+  CC(target) Release/obj.target/scrypt_wrapper/src/scryptwrapper/hash.o
+  AR(target) Release/obj.target/scrypt_wrapper.a
+  COPY Release/scrypt_wrapper.a
+  CC(target) Release/obj.target/scrypt_lib/scrypt/scrypt-1.2.0/lib/crypto/crypto_scrypt.o
+  CC(target) Release/obj.target/scrypt_lib/scrypt/scrypt-1.2.0/lib/crypto/crypto_scrypt_smix.o
+  CC(target) Release/obj.target/scrypt_lib/scrypt/scrypt-1.2.0/libcperciva/util/warnp.o
+  CC(target) Release/obj.target/scrypt_lib/scrypt/scrypt-1.2.0/libcperciva/alg/sha256.o
+  CC(target) Release/obj.target/scrypt_lib/scrypt/scrypt-1.2.0/libcperciva/util/insecure_memzero.o
+  CC(target) Release/obj.target/scrypt_lib/scrypt/scrypt-1.2.0/lib/scryptenc/scryptenc_cpuperf.o
+  AR(target) Release/obj.target/scrypt_lib.a
+  COPY Release/scrypt_lib.a
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_common.o
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_params_async.o
+In file included from ../src/node-boilerplate/inc/scrypt_params_async.h:28:0,
+                 from ../src/node-boilerplate/scrypt_params_async.cc:4:
+../src/node-boilerplate/inc/scrypt_async.h: In member function Åevirtual void ScryptAsyncWorker::HandleErrorCallback()Åf:
+../src/node-boilerplate/inc/scrypt_async.h:53:29: warning: Åev8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>* ) constÅf is deprecated [-Wdeprecated-declarations]
+       callback->Call(1, argv);
+                             ^
+In file included from ../src/node-boilerplate/scrypt_params_async.cc:1:0:
+../../nan/nan.h:1618:3: note: declared here
+   Call(int argc, v8::Local<v8::Value> argv[]) const {
+   ^
+../src/node-boilerplate/scrypt_params_async.cc: In member function Åevirtual void ScryptParamsAsyncWorker::HandleOKCallback()Åf:
+
+../src/node-boilerplate/scrypt_params_async.cc:32:25: warning: Åev8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Val ue>*) constÅf is deprecated [-Wdeprecated-declarations]
+   callback->Call(2, argv);
+                         ^
+In file included from ../src/node-boilerplate/scrypt_params_async.cc:1:0:
+../../nan/nan.h:1618:3: note: declared here
+   Call(int argc, v8::Local<v8::Value> argv[]) const {
+   ^
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_params_sync.o
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_kdf_async.o
+In file included from ../src/node-boilerplate/inc/scrypt_kdf_async.h:28:0,
+                 from ../src/node-boilerplate/scrypt_kdf_async.cc:4:
+../src/node-boilerplate/inc/scrypt_async.h: In member function Åevirtual void ScryptAsyncWorker::HandleErrorCallback()Åf:
+../src/node-boilerplate/inc/scrypt_async.h:53:29: warning: Åev8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>* ) constÅf is deprecated [-Wdeprecated-declarations]
+       callback->Call(1, argv);
+                             ^
+In file included from ../src/node-boilerplate/scrypt_kdf_async.cc:1:0:
+../../nan/nan.h:1618:3: note: declared here
+   Call(int argc, v8::Local<v8::Value> argv[]) const {
+   ^
+../src/node-boilerplate/scrypt_kdf_async.cc: In member function Åevirtual void ScryptKDFAsyncWorker::HandleOKCallback()Åf:
+../src/node-boilerplate/scrypt_kdf_async.cc:28:27: warning: Åev8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value> *) constÅf is deprecated [-Wdeprecated-declarations]
+     callback->Call(2, argv);
+                           ^
+In file included from ../src/node-boilerplate/scrypt_kdf_async.cc:1:0:
+../../nan/nan.h:1618:3: note: declared here
+   Call(int argc, v8::Local<v8::Value> argv[]) const {
+   ^
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_kdf_sync.o
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_kdf-verify_sync.o
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_kdf-verify_async.o
+In file included from ../src/node-boilerplate/inc/scrypt_kdf-verify_async.h:28:0,
+                 from ../src/node-boilerplate/scrypt_kdf-verify_async.cc:4:
+../src/node-boilerplate/inc/scrypt_async.h: In member function Åevirtual void ScryptAsyncWorker::HandleErrorCallback()Åf:
+../src/node-boilerplate/inc/scrypt_async.h:53:29: warning: Åev8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>* ) constÅf is deprecated [-Wdeprecated-declarations]
+       callback->Call(1, argv);
+                             ^
+In file included from ../src/node-boilerplate/scrypt_kdf-verify_async.cc:1:0:
+../../nan/nan.h:1618:3: note: declared here
+   Call(int argc, v8::Local<v8::Value> argv[]) const {
+   ^
+../src/node-boilerplate/scrypt_kdf-verify_async.cc: In member function Åevirtual void ScryptKDFVerifyAsyncWorker::HandleOKCallba ck()Åf:
+../src/node-boilerplate/scrypt_kdf-verify_async.cc:30:25: warning: Åev8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8: :Value>*) constÅf is deprecated [-Wdeprecated-declarations]
+   callback->Call(2, argv);
+                         ^
+In file included from ../src/node-boilerplate/scrypt_kdf-verify_async.cc:1:0:
+../../nan/nan.h:1618:3: note: declared here
+   Call(int argc, v8::Local<v8::Value> argv[]) const {
+   ^
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_hash_sync.o
+  CXX(target) Release/obj.target/scrypt/src/node-boilerplate/scrypt_hash_async.o
+In file included from ../src/node-boilerplate/inc/scrypt_hash_async.h:28:0,
+                 from ../src/node-boilerplate/scrypt_hash_async.cc:28:
+../src/node-boilerplate/inc/scrypt_async.h: In member function Åevirtual void ScryptAsyncWorker::HandleErrorCallback()Åf:
+../src/node-boilerplate/inc/scrypt_async.h:53:29: warning: Åev8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>* ) constÅf is deprecated [-Wdeprecated-declarations]
+       callback->Call(1, argv);
+                             ^
+In file included from ../src/node-boilerplate/scrypt_hash_async.cc:25:0:
+../../nan/nan.h:1618:3: note: declared here
+   Call(int argc, v8::Local<v8::Value> argv[]) const {
+   ^
+../src/node-boilerplate/scrypt_hash_async.cc: In member function Åevirtual void ScryptHashAsyncWorker::HandleOKCallback()Åf:
+../src/node-boilerplate/scrypt_hash_async.cc:52:25: warning: Åev8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value >*) constÅf is deprecated [-Wdeprecated-declarations]
+   callback->Call(2, argv);
+                         ^
+In file included from ../src/node-boilerplate/scrypt_hash_async.cc:25:0:
+../../nan/nan.h:1618:3: note: declared here
+   Call(int argc, v8::Local<v8::Value> argv[]) const {
+   ^
+  CXX(target) Release/obj.target/scrypt/scrypt_node.o
+  SOLINK_MODULE(target) Release/obj.target/scrypt.node
+  COPY Release/scrypt.node
+make: Leaving directory '/mnt/c/Users/kenfu/OneDrive - ÉWÉÉÉpÉìÉVÉXÉeÉÄäîéÆâÔé–/ãZèpÉRÉ~ÉÖ3ä˙/nodejs/my_JS_erc20_token/node_modu
+les/scrypt/build'
++ truffle-hdwallet-provider@0.0.3
++ zeppelin-solidity@1.8.0
+added 7 packages, removed 1 package and updated 3 packages in 122.267s

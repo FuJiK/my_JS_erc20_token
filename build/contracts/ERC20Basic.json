@@ -85,9 +85,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.18;\n\n\n/**\n * @title ERC20Basic\n * @dev Simpler version of ERC20 interface\n * @dev see https://github.com/ethereum/EIPs/issues/179\n */\ncontract ERC20Basic {\n  function totalSupply() public view returns (uint256);\n  function balanceOf(address who) public view returns (uint256);\n  function transfer(address to, uint256 value) public returns (bool);\n  event Transfer(address indexed from, address indexed to, uint256 value);\n}\n",
-  "sourcePath": "C:\\Users\\kenfu\\OneDrive - ジャパンシステム株式会社\\技術コミュ3期\\nodejs\\my_JS_erc20_token\\node_modules\\zeppelin-solidity\\contracts\\token\\ERC20\\ERC20Basic.sol",
+  "sourcePath": "/mnt/c/Users/kenfu/OneDrive - ジャパンシステム株式会社/技術コミュ3期/nodejs/my_JS_erc20_token/node_modules/zeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol",
   "ast": {
-    "absolutePath": "/C/Users/kenfu/OneDrive - ジャパンシステム株式会社/技術コミュ3期/nodejs/my_JS_erc20_token/node_modules/zeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol",
+    "absolutePath": "/mnt/c/Users/kenfu/OneDrive - ジャパンシステム株式会社/技術コミュ3期/nodejs/my_JS_erc20_token/node_modules/zeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol",
     "exportedSymbols": {
       "ERC20Basic": [
         357
@@ -472,7 +472,7 @@
     "src": "0:445:5"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/kenfu/OneDrive - ジャパンシステム株式会社/技術コミュ3期/nodejs/my_JS_erc20_token/node_modules/zeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol",
+    "absolutePath": "/mnt/c/Users/kenfu/OneDrive - ジャパンシステム株式会社/技術コミュ3期/nodejs/my_JS_erc20_token/node_modules/zeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol",
     "exportedSymbols": {
       "ERC20Basic": [
         357
@@ -862,5 +862,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-04-20T05:36:10.094Z"
+  "updatedAt": "2018-04-24T04:44:20.652Z"
 }
