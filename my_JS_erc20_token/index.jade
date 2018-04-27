@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    title JsToken Wallet
+  body
+    #js-app
+      h1 {{ name }} Wallet 
+      p Your Address: {{ defaultAccount }}
+      p {{ name }} own: {{ showBalance(balance) }}{{ symbol }}
+      p
+        | To_send：　＜br /＞
+        input(v-model='to', type='text')
+      p
+        button(@click='send') transfer
+      p(v-if='history')
+        | transfer successed: 
+        a(:href="'https://ropsten.etherscan.io/tx/' + history")
+          | {{ history }}
+    script(src='https://cdn.jsdelivr.net/npm/vue')
+    script.
+      // writing code here
+      window.addEventListener('load', function() {
+      if (typeof web3 !== 'undefined') {
+      window.web3 = new Web3(web3.currentProvider);
+      onlyRopstenTestNetwork(main);
+      } else {
+      document.write("Please install <a href="\\"https://metamask.io/\"">MetaMask</a>.")
+      }
+      })
+      function onlyRopstenTestNetwork(cb) {
+      web3.version.getNetwork(function(err, netId) {
+      if (netId === "3") {
+      cb();
+      } else {
+      document.write("Please switch MetaMask to Ropsten Test Network and reload page.");
+      }
+      });
+      }
+      var contractAddress = "0xd7182bd804caad7b93d607a1bf769d5c7354afa4";
+      var abiArray = ...;
+      function main() {
+      var defaultAccount = web3.eth.defaultAccount;
+      var contract = web3.eth.contract(abiArray).at(contractAddress);
+      contract.name(function(err, name){
+      if(err) throw err;
+      contract.symbol(function(err, symbol){
+      if(err) throw err;
+      contract.balanceOf(defaultAccount, function(err, balance){
+      if(err) throw err;
+      initializeApp(defaultAccount, contract, name, symbol, balance);
+      });
+      });
+      });
+      }

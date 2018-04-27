@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JsToken Wallet</title>
+</head>
+<body>
+<div id="js-app">
+<h1>{{ name }} Wallet </h1>
+<p>Your Address: {{ defaultAccount }}</p>
+<p>{{ name }} own: {{ showBalance(balance) }}{{ symbol }}</p>
+<p>
+To_send：　＜/br＞
+<input v-model="to" type="text" />
+</p>
+<p>
+<button @click="send">transfer</button>
+</p>
+<p v-if="history">
+transfer successed: <a :href="'https://ropsten.etherscan.io/tx/' + history">{{ history }}
+</a>
+</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+// writing code here
+
+window.addEventListener('load', function() {
+  if (typeof web3 !== 'undefined') {
+    window.web3 = new Web3(web3.currentProvider);
+    onlyRopstenTestNetwork(main);
+  } else {
+    document.write("Please install <a href="\"https://metamask.io/\"">MetaMask</a>.")
+  }
+})
+function onlyRopstenTestNetwork(cb) {
+  web3.version.getNetwork(function(err, netId) {
+    if (netId === "3") {
+      cb();
+    } else {
+      document.write("Please switch MetaMask to Ropsten Test Network and reload page.");
+    }
+  });
+}
+</script>
+</body>
+</html>
