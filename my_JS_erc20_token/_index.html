@@ -4,12 +4,12 @@
 <title>JsToken Wallet</title>
 </head>
 <body>
-<div id="js-app">
-<h1>{{ name }} Wallet </h1>
-<p>Your Address: {{ defaultAccount }}</p>
-<p>{{ name }} own: {{ showBalance(balance) }}{{ symbol }}</p>
-<p>
-To_send：　＜/br＞
+  <div id="js-app">
+    <h1>{{ name }} Wallet </h1>
+    <p>Your Address: {{ defaultAccount }}</p>
+    <p>あなたのアドレス: {{ defaultAccount }}</p>
+    <p>{{ name }} own: {{ showBalance(balance) }}{{ symbol }}</p>
+    <p>To_send：　＜/br＞
 <input v-model="to" type="text" />
 </p>
 <p>
