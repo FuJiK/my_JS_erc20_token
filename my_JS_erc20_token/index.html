@@ -1,105 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Token Wallet</title>
-</head>
-<body>
+  <head>
+    <title>JsToken Token</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
 
-  <div id="js-app">
-    <h1>{{ name }} Wallet</h1>
-    <p>あなたのアドレス: {{ defaultAccount }}</p>
-    <p>{{ name }}の保有量: {{ showBalance(balance) }} {{ symbol }}</p>
-    <p>
-       送金先: <br />
-       <input v-model="to" type="text" />
-    </p>
-    <p>
-      送る量: <br />
-      <input v-model="amount" type="number" placeholder="送金額を入力" />
-    </p>
-    <p>
-      <button @click="send">送金</button>
-    </p>
-    <p v-if="history">
-    送金成功: <a :href="'https://ropsten.etherscan.io/tx/' + history">{{ history }}
-    </a>
-</p>
-  </div>
+  <body>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script>
-// ここにコードを書いていきます
-function initializeApp(defaultAccount, contract, name, symbol, balance) {
-  new Vue({
-    el: '#js-app',
-    data: {
-      defaultAccount: 0x2142df1908f792be57a9e92baa87b010e7749476, // 選択されているEhtereumアカウント
-      name: JsToken,                     // トークンの名前
-      symbol: JST,                 // トークンのシンボル
-      balance: balance,               // トークンをいくら所持しているか
-      to: "",                         // 送金先アドレス
-      amount: 0,                      // 送金する量
-      history: ""                     // 送金トランザクションのハッシュ
-    },
-    methods: {
-      // 残高の表示を整形するメソッド
-      showBalance: function(balance) {
-        return (balance / 1e18).toFixed(2);
-      },
-      // 送金するメソッド
-      send: function() {
-        var $this = this;
-        var sendAmount = this.amount * 1e18;
-        contract.transfer(this.to, sendAmount, {from: defaultAccount}, function(err, txhash){
-          if (err) throw err;
-          $this.history = txhash;
-          contract.balanceOf(defaultAccount, function(err, balance){
-            $this.balance = balance;
-          });
-        });
-      }
-    }
-  })
-}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>JsToken Token</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <form id="js-form">
+            Your address: <div id="js-address"></div><br />
+            Send to: <input class="form-control" type="text" name="address"/>
+            Amount:  <input class="form-control" type="text" name="amount"/>
+            <input class="btn btn-primary" type="submit" />
+          </form>
+          <div id="js-result"></div>
+        </div>
+      </div>
+    </div>
 
-var contractAddress = "0x91e23bce6ba9cd3e835b2df05165de6e1170f898";
-var abiArray = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_subtractedValue","type":"uint256"}],"name":"decreaseApproval","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_addedValue","type":"uint256"}],"name":"increaseApproval","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"initialSupply","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"}];
-
-function main() {
-  var defaultAccount = web3.eth.defaultAccount;
-  var contract = web3.eth.contract(abiArray).at(contractAddress);
-  contract.name(function(err, name){
-    if(err) throw err;
-    contract.symbol(function(err, symbol){
-      if(err) throw err;
-      contract.balanceOf(defaultAccount, function(err, balance){
-        if(err) throw err;
-        initializeApp(defaultAccount, contract, name, symbol, balance);
-      });
-    });
-  });
-}
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ethjs@0.3.0/dist/ethjs.min.js"></script>
+    <script>
 window.addEventListener('load', function() {
   if (typeof web3 !== 'undefined') {
-    window.web3 = new Web3(web3.currentProvider);
-    onlyRopstenTestNetwork(main);
+    // Use Mist/MetaMask's provider
+    window.eth = new Eth(web3.currentProvider);
   } else {
-    document.write("Please install <a href="\"https://metamask.io/\"">MetaMask</a>.")
+    alert('Please install MetaMask\nhttps://metamask.io/');
   }
-})
-function onlyRopstenTestNetwork(cb) {
-  web3.version.getNetwork(function(err, netId) {
-    if (netId === "3") {
-      cb();
-    } else {
-      document.write("Please switch MetaMask to Ropsten Test Network and reload page.");
-    }
+  var abi =
+    [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_subtractedValue","type":"uint256"}],"name":"decreaseApproval","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_addedValue","type":"uint256"}],"name":"increaseApproval","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"initialSupply","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"}];
+  var account;
+  var token = eth.contract(abi).at('0x91e23bce6ba9cd3e835b2df05165de6e1170f898');
+  eth.accounts().then(function(accounts){
+    account = accounts[0];
+    $("#js-address").text(account);
+  })
+  $("#js-form").on("submit", function(e){
+    e.preventDefault();
+    var address = $("#js-form input[name=address]").val();
+    var amount = Number($("#js-form input[name=amount]").val()) * 1e18;
+    token
+      .transfer(address, amount, {from: account})
+      .then(function(txhash){
+        $("#js-result").html("Success to send transaction: <a href=\"https://ropsten.etherscan.io/tx/" + txhash + "\">" + txhash +  "</a>.");
+      })
+      .catch(function(err){
+        console.log("Error:");
+        console.log(err);
+      });
   });
-}
-
-
-
-  </script>
-</body>
+})
+   </script>
+  </body>
 </html>
